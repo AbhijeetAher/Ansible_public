@@ -1,0 +1,10 @@
+---
+ - hosts: server1.test.com
+   user: root
+   vars :
+    motd_welcome: 'welcome to test.com\n'
+   tasks: 
+   - name: sample motd
+     copy: 
+      dest: /etc/motd
+      content: "{{ motd_welcome }}"
