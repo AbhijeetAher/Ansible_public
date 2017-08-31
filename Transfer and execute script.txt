@@ -1,0 +1,11 @@
+---
+- name: Transfer and execute a script.
+  hosts: 10.30.40.50
+  user: mgmtansible
+  become: yes
+  tasks:
+     - name: Transfer the script
+       copy: src=/home/scripts/securitypatch.sh dest=/home/securitypatch.sh mode=0755
+
+     - name: Execute the script
+       command: '/bin/bash /home/securitypatch.sh'
