@@ -1,0 +1,13 @@
+---
+- hosts: all
+  user: mgmtansible
+  become: true
+
+
+  tasks:
+  - lineinfile:
+     dest: /etc/sudoers
+     state: present
+     regexp: '^test.user ALL\='
+     line: 'test.user ALL=(ALL) NOPASSWD:ALL'
+     validate: 'visudo -cf %s'
